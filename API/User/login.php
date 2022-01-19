@@ -20,16 +20,39 @@ $checkEmail =  mysqli_num_rows($exeSQL);
 if ($checkEmail != 0) {
     $arrayu = mysqli_fetch_array($exeSQL);
     if (($arrayu['user_email'] != $user_email OR $arrayu['user_mobileno'] != $user_mobileno) && $arrayu['user_password'] != $user_password) {
-        $Message = "Wrong";
+        http_response_code(400);
     } else {
-        $Message = "Success";
+        $user_arr=array();
+        $user_arr["records"]=array();
+       
+        while ($row = $sql->fetch_assoc()){
+            // extract row
+            // this will make $row['name'] to
+            // just $name only
+            extract($row);
+        
+            $user_item=array(
+                "user_id" => $user_id,
+                "user_firstname" => $user_firstname,
+                "user_lastname" => $user_lastname,
+                "user_email" => $user_email,
+                "user_mobileno" => $user_mobileno,
+                "user_password" => $user_password
+            );
+        
+            array_push($user_arr["user"], $user_item);
+        }
+        // set response code - 200 OK
+        http_response_code(200);
     }
-} else {
-    $Message = "No account yet";
 }
-}else{
-    $Message = "Field is empty!";
 }
-$response[] = array("Message" => $Message);
-echo json_encode($response);
-?> 
+
+
+
+// show products data in json format
+echo json_encode($user_arr);
+?>   
+
+
+}
