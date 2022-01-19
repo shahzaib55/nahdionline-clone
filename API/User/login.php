@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once '../config/database.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
