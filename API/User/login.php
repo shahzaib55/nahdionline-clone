@@ -15,13 +15,10 @@ if(isset($postdata) && !empty($postdata)){
     $user_password = $request->user_password;
     $sql = "SELECT * FROM users WHERE  (user_email='$user_email' OR user_mobileno='$user_mobileno')  AND user_password='$user_password'";
     $exeSQL = mysqli_query($conn, $sql);
-$checkEmail =  mysqli_num_rows($exeSQL);
+$checkuser =  mysqli_num_rows($exeSQL);
 
-if ($checkEmail != 0) {
-    $arrayu = mysqli_fetch_array($exeSQL);
-    if (($arrayu['user_email'] != $user_email OR $arrayu['user_mobileno'] != $user_mobileno) && $arrayu['user_password'] != $user_password) {
-        http_response_code(400);
-    } else {
+if ($checkuser != 0) {
+    
         $user_arr=array();
         $user_arr["records"]=array();
        
@@ -40,18 +37,20 @@ if ($checkEmail != 0) {
                 "user_password" => $user_password
             );
         
-            array_push($user_arr["user"], $user_item);
+            array_push($user_arr["records"], $user_item);
+
         }
         // set response code - 200 OK
         http_response_code(200);
+        // show products data in json format
+      echo json_encode($user_arr);
     }
+
 }
-}
 
 
 
-// show products data in json format
-echo json_encode($user_arr);
+
 ?>   
 
 
