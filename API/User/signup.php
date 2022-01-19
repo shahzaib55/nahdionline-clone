@@ -1,36 +1,29 @@
 <?php
-
-require_once '../Objects/user.php';
-require_once '../config/database.php';
-
-$register_error_message = '';
-
-// check Register request
-   
-     if (!empty($_POST['submit'])) {
-    if ($_POST['firstname'] == "") {
-        $register_error_message = 'firstName field is required!';
-    }else if ($_POST['lastname'] == "") {
-        $register_error_message = 'laststName field is required!';
-    } else if ($_POST['email'] == "") {
-        $register_error_message = 'Email field is required!';
-    } else if ($_POST['mobileno'] == "") {
-        $register_error_message = 'mobileno field is required!';
-    } else if ($_POST['password'] == "") {
-        $register_error_message = 'Password field is required!';
-    }  else if (isEmail($_POST['email'])) {
-        $register_error_message = 'Email is already in use!';
-    } 
-    else {
+require_once 'database.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: access");
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+ 
+$postdata = file_get_contents("php://input");
+if(isset($postdata) && !empty($postdata)){
+    $request = json_decode($postdata);
+     
+     
+    $firstname = $request->firstname;
+    $lastname = $request->lastname;
+    $email = $request->email;
+    $mobileno = $request->mobileno;
+    $password = $request->password;
+    $sql = "INSERT INTO users (firstname, lastname, email, mobileno, password) VALUES ('$firstname','$lastname','$email','$mobileno','$password')";
+    if(mysqli_query($conn,$sql)){
+        http_response_code(200);
         
-        $user_id = Register($_POST['firstname'],$_POST['lastname'], $_POST['email'], $_POST['mobileno'], $_POST['password']);
-        // redirect user to the login page
-        header("Location: login.php");
-   
     }
-
+    else{
+         http_response_code(400); 
+    }
+         
 }
 
-
-
-?>
+?> 

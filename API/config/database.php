@@ -1,27 +1,21 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: access");
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-//database Connection variables
-define('HOST', 'localhost:3307'); // Database host name 
-define('USER', 'root'); // Database user. 
-define('PASSWORD', ''); // user password  
-define('DATABASE', 'databas'); // Database Database name
-
-
-//function for conection use
-function getConnection()
-{
-    try {
-        $db = new PDO('mysql:host='.HOST.';dbname='.DATABASE.'', USER, PASSWORD);
-        return $db;
-        echo "connected succesfully";
-    } catch (PDOException $e) {
-        return "Error!: " . $e->getMessage();
-        die();
-        
-    }
-    
+$servername = "localhost:3307";
+$username = "root";
+$password = "";
+$database= "databas";
+ 
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+ 
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
-
-
-
+echo "Connected successfully";
 ?>
+
