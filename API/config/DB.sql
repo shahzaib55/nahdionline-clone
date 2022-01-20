@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS`users` (
 --
 
 CREATE TABLE IF NOT EXISTS`product_category` (
-  `catory_id` int(30) NOT NULL AUTO_INCREMENT,
+  `category_id` int(30) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(50) NOT NULL,
   `category_description` varchar(100) NOT NULL
    PRIMARY KEY (`category_id`)
@@ -41,7 +41,7 @@ INSERT INTO `users` (`user_id`, `user_firstname`, `user_lastname`, `user_email`,
 -- Insert data into table `product_category`
 --
 
-INSERT INTO `product_category` (`catory_id`, `category_name`, `category_description`) VALUES
+INSERT INTO `product_category` (`category_id`, `category_name`, `category_description`) VALUES
 (1, 'category1', 'this is category 1.'),
 (4, 'category2', 'this is category 2.'),
 (6, 'category3', 'this is category 3.');
