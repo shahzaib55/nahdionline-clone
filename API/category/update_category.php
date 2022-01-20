@@ -10,20 +10,18 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
-     
-    $user_firstname = $request->user_firstname;
-    $user_lastname = $request->user_lastname;
-    $user_email = $request->user_email;
-    $user_mobileno = $request->user_mobileno;
-    $user_password = $request->user_password;
-    $sql = "INSERT INTO users (user_firstname, user_lastname, user_email, user_mobileno, user_password) VALUES ('$user_firstname','$user_lastname','$user_email','$user_mobileno','$user_password')";
+    $category_id = $request->$category_id;
+    $category_name = $request->category_name;
+    $category_description = $request->category_description;
+ 
+    $sql = "UPDATE product_Category SET category_name=.$category_name., category_description=.$category_description. WHERE id=.$category_id.";
     if(mysqli_query($conn,$sql)){
-    
-        echo json_encode(["success"=>true,"msg"=>"inserted"]);
+ 
+        echo json_encode(["success"=>true,"msg"=>"updated"]);
 		return;
     }
     else{
-        echo json_encode(["success"=>false,"msg"=>"Failed"]);
+        echo json_encode(["success"=>false,"msg"=>"failed"]);
 		return;
          
     }
