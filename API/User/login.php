@@ -12,41 +12,32 @@ if(isset($postdata) && !empty($postdata)){
      
      
     $user_email = $request->user_email;
-    $user_mobileno = $request->user_mobileno;
     $user_password = $request->user_password;
-    $sql = "SELECT * FROM users WHERE  (user_email='$user_email' OR user_mobileno='$user_mobileno')  AND user_password='$user_password'";
+    $sql = "SELECT * FROM users WHERE  user_email='$user_email'  AND user_password='$user_password'";
     $exeSQL = mysqli_query($conn, $sql);
-$checkuser =  mysqli_num_rows($exeSQL);
-
-if ($checkuser != 0) {
-    
-        $user_arr=array();
-        $user_arr["records"]=array();
-       
-        while ($row = $exeSQL->fetch_assoc()){
-            // extract row
-            // this will make $row['name'] to
-            // just $name only
-            extract($row);
-        
-            $user_item=array(
-                "user_id" => $user_id,
-                "user_firstname" => $user_firstname,
-                "user_lastname" => $user_lastname,
-                "user_email" => $user_email,
-                "user_mobileno" => $user_mobileno,
-                "user_password" => $user_password
+    if(mysqli_num_rows($exeSQL) > 0){
+        while($row_user = mysqli_fetch_array($exeSQL)){ 
+            $json_array[] = array(
+              'user_id' =>  $row_user ['user_id'],
+              'user_firstname' =>  $row_user ['user_firstname'],
+              'user_lastname' =>  $row_user ['user_lastname'],
+              'user_email' =>  $row_user ['user_email'],
+              'user_mobileno' =>  $row_user ['user_mobileno'],
             );
-        
-            array_push($user_arr["records"], $user_item);
-
         }
-        // set response code - 200 OK
-        http_response_code(200);
-        // show products data in json format
-      echo json_encode($user_arr);
+        echo json_encode(["success"=>true,"fetchuser"=>$json_array]);
+        return;
+    }
+    else{
+        echo json_encode(["success"=>false]);
+        return;
     }
 
+
+}
+else{
+    echo json_encode(["please fill all fields"=>false]);
+    return;
 }
 
 
@@ -55,4 +46,3 @@ if ($checkuser != 0) {
 ?>   
 
 
-}
