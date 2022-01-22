@@ -23,7 +23,7 @@ if ($checkuser != 0) {
         $user_arr=array();
         $user_arr["records"]=array();
        
-        while ($row = $sql->fetch_assoc()){
+        while ($row = $exeSQL->fetch_assoc()){
             // extract row
             // this will make $row['name'] to
             // just $name only
