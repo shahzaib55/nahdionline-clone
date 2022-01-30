@@ -14,7 +14,7 @@ if(isset($postdata) && !empty($postdata)){
     $category_name = $request->category_name;
     $category_description = $request->category_description;
  
-    $sql = "UPDATE product_Category SET category_name=.$category_name., category_description=.$category_description. WHERE id=.$category_id.";
+    $sql = "UPDATE product_category SET category_name=.$category_name., category_description=.$category_description. WHERE category_id=.$category_id.";
     if(mysqli_query($conn,$sql)){
  
         echo json_encode(["success"=>true,"msg"=>"updated"]);
