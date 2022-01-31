@@ -13,7 +13,7 @@ if(isset($postdata) && !empty($postdata)){
      
     $user_email = $request->user_email;
     $user_password = $request->user_password;
-    $sql = "SELECT * FROM users WHERE  user_email='$user_email'  AND user_password='$user_password'";
+    $sql = "SELECT * FROM user_customer WHERE  user_email='$user_email'  AND user_password='$user_password'";
     $exeSQL = mysqli_query($conn, $sql);
     if(mysqli_num_rows($exeSQL) > 0){
         while($row_user = mysqli_fetch_array($exeSQL)){ 

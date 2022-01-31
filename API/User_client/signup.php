@@ -16,7 +16,7 @@ if(isset($postdata) && !empty($postdata)){
     $user_email = $request->user_email;
     $user_mobileno = $request->user_mobileno;
     $user_password = $request->user_password;
-    $sql = "INSERT INTO users (user_firstname, user_lastname, user_email, user_mobileno, user_password) VALUES ('$user_firstname','$user_lastname','$user_email','$user_mobileno','$user_password')";
+    $sql = "INSERT INTO user_customer (user_firstname, user_lastname, user_email, user_mobileno, user_password) VALUES ('$user_firstname','$user_lastname','$user_email','$user_mobileno','$user_password')";
     if(mysqli_query($conn,$sql)){
     
         echo json_encode(["success"=>true,"msg"=>"inserted"]);
