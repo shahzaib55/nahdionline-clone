@@ -24,6 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_category`
+--
+
+CREATE TABLE `product_category` (
+  `category_id` int(100) NOT NULL,
+  `category_name` varchar(250) NOT NULL,
+  `category_description` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_category`
+--
+
+INSERT INTO `product_category` (`category_id`, `category_name`, `category_description`) VALUES
+(1, 'yyy', 'this is description');
+
+-- --------------------------------------------------------
+--
 -- Table structure for table `product`
 --
 
@@ -46,25 +64,6 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_i
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `product_category`
---
-
-CREATE TABLE `product_category` (
-  `category_id` int(100) NOT NULL,
-  `product_id` int(100) NOT NULL,
-  `category_name` varchar(250) NOT NULL,
-  `category_description` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_category`
---
-
-INSERT INTO `product_category` (`category_id`, `product_id`, `category_name`, `category_description`) VALUES
-(1, 1, 'yyy', 'this is description');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `users_admin`
@@ -110,13 +109,12 @@ CREATE TABLE `user_customer` (
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
-
 --
 -- Indexes for table `product_category`
 --
 ALTER TABLE `product_category`
-  ADD PRIMARY KEY (`category_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`category_id`);
+ 
 
 --
 -- Indexes for table `users_admin`
@@ -146,17 +144,7 @@ ALTER TABLE `product_category`
 ALTER TABLE `users_admin`
   MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `product_category`
---
-ALTER TABLE `product_category`
-  ADD CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
