@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 31, 2022 at 08:51 PM
+-- Generation Time: Feb 01, 2022 at 02:12 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -24,46 +24,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category`
---
-
-CREATE TABLE `product_category` (
-  `category_id` int(100) NOT NULL,
-  `category_name` varchar(250) NOT NULL,
-  `category_description` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_category`
---
-
-INSERT INTO `product_category` (`category_id`, `category_name`, `category_description`) VALUES
-(1, 'yyy', 'this is description');
-
--- --------------------------------------------------------
---
 -- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
-  `product_id` int(100) NOT NULL,
-  `product_name` varchar(100) NOT NULL,
-  `product_price` int(100) NOT NULL,
-  `product_image` varchar(100) NOT NULL,
-  `product_quantity` int(100) NOT NULL,
-  `product_usefor` varchar(200) NOT NULL,
-  `product_description` varchar(250) NOT NULL
+  `prouct_id` int(100) NOT NULL,
+  `prouct_name` varchar(100) NOT NULL,
+  `prouct_price` int(100) NOT NULL,
+  `prouct_image` varchar(100) NOT NULL,
+  `prouct_quantity` int(100) NOT NULL,
+  `prouct_usefor` varchar(250) NOT NULL,
+  `prouct_description` varchar(250) NOT NULL,
+  `category_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`, `product_quantity`, `product_usefor`, `product_description`) VALUES
-(1, 'xyz', 50, 'image.png', 3, 'abc,xyz,efg', 'this is description');
+INSERT INTO `product` (`prouct_id`, `prouct_name`, `prouct_price`, `prouct_image`, `prouct_quantity`, `prouct_usefor`, `prouct_description`, `category_id`) VALUES
+(2, 'xyz', 50, 'image.jpg', 5, 'xyz,abc,efg', 'this is description', 1);
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `prouct_category`
+--
+
+CREATE TABLE `prouct_category` (
+  `category_id` int(100) NOT NULL,
+  `category_name` varchar(100) NOT NULL,
+  `category_description` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prouct_category`
+--
+
+INSERT INTO `prouct_category` (`category_id`, `category_name`, `category_description`) VALUES
+(1, 'yyy', 'this is description');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users_admin`
@@ -74,7 +75,7 @@ CREATE TABLE `users_admin` (
   `user_name` varchar(100) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `user_password` varchar(100) NOT NULL,
-  `user_roll` varchar(20) NOT NULL
+  `user_roll` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,7 +84,7 @@ CREATE TABLE `users_admin` (
 
 INSERT INTO `users_admin` (`user_id`, `user_name`, `user_email`, `user_password`, `user_roll`) VALUES
 (1, 'ali', 'ali@gmail.com', 'ali123', 'true'),
-(2, 'usman', 'usman@gmail.com', 'usman123@', 'false');
+(2, 'usman', 'usman@gmail.com', 'usman123', 'false');
 
 -- --------------------------------------------------------
 
@@ -108,18 +109,25 @@ CREATE TABLE `user_customer` (
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`prouct_id`),
+  ADD KEY `category_id` (`category_id`);
+
 --
--- Indexes for table `product_category`
+-- Indexes for table `prouct_category`
 --
-ALTER TABLE `product_category`
+ALTER TABLE `prouct_category`
   ADD PRIMARY KEY (`category_id`);
- 
 
 --
 -- Indexes for table `users_admin`
 --
 ALTER TABLE `users_admin`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_customer`
+--
+ALTER TABLE `user_customer`
   ADD PRIMARY KEY (`user_id`);
 
 --
@@ -130,13 +138,13 @@ ALTER TABLE `users_admin`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prouct_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `product_category`
+-- AUTO_INCREMENT for table `prouct_category`
 --
-ALTER TABLE `product_category`
-  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `prouct_category`
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users_admin`
@@ -144,7 +152,22 @@ ALTER TABLE `product_category`
 ALTER TABLE `users_admin`
   MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
+--
+-- AUTO_INCREMENT for table `user_customer`
+--
+ALTER TABLE `user_customer`
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT;
 
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `prouct_category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
