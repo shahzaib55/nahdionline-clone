@@ -15,7 +15,7 @@ if(isset($postdata) && !empty($postdata)){
     $product_id = $request->product_id;
     $user_id = $request->user_id;
  
-    $sql = "INSERT INTO product_category (order_id, product_id) VALUES ('$order_id','$product_id')";
+    $sql = "INSERT INTO orders(order_id, product_id, user_id) VALUES ('$order_id','$product_id','$user_id')";
     if(mysqli_query($conn,$sql)){
  
         
