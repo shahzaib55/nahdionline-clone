@@ -17,9 +17,9 @@ if(isset($postdata) && !empty($postdata)){
     $product_quantity = $request->product_quantity;
     $product_usefor = serialize($request->product_usefor);
     $product_description = $request->product_description;
- 
+    $category_id = $request->category_id;
     $sql = "UPDATE product SET product_name='$product_name',product_price='$product_price',product_image='$product_image'
-    ,product_quantity='$product_quantity',product_usefor='$product_usefor', product_description='$product_description' WHERE product_id='$product_id'";
+    ,product_quantity='$product_quantity',product_usefor='$product_usefor', product_description='$product_description', category_id='$category_id' WHERE product_id='$product_id'";
     if(mysqli_query($conn,$sql)){
  
         echo json_encode(["success"=>true,"msg"=>"updated"]);
