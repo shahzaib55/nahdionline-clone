@@ -1,4 +1,4 @@
- <?php
+<?php
 require_once '../config/database.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
@@ -10,8 +10,8 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 
 $data = json_decode(file_get_contents("php://input"));  
-	$category_id = $data->category_id;
-	$sql = "DELETE FROM product_category WHERE category_id= '$category_id' ";
+	$order_id = $data->order_id;
+	$sql = "DELETE FROM orders WHERE order_id= '$order_id' ";
     
     
     if(mysqli_query($conn, $sql)){ 

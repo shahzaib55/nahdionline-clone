@@ -2,5 +2,21 @@
 All url list
 
 http://localhost/PHP/API/config/database.php
+--#category--
+http://localhost/PHP/API/category/insert_category.php
+http://localhost/PHP/API/category/show_category.php
+http://localhost/PHP/API/category/update_category.php
+http://localhost/PHP/API/category/delete_category.php
+--#product--
+http://localhost/PHP/API/product/insert_product.php
+http://localhost/PHP/API/product/show_product.php
+http://localhost/PHP/API/product/update_product.php
+http://localhost/PHP/API/product/delete_product.php
+--#user_admin--
+http://localhost/PHP/API/user_admin/create_user.php
+http://localhost/PHP/API/user_admin/delete_user.php
+http://localhost/PHP/API/user_admin/show_user.php
+http://localhost/PHP/API/user_admin/update_user.php
+--#user_customer--
 http://localhost/PHP/API/User/login.php
 http://localhost/PHP/API/User/signup.php

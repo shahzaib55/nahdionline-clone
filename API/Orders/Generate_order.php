@@ -11,15 +11,11 @@ if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
      
-    $product_name = $request->product_name;
-    $product_price = $request->product_price;
-    $product_image = $request->product_image;
-    $product_quantity = $request->product_quantity;
-    $product_usefor = serialize($request->product_usefor);
-    $product_description = $request->product_description;
-    $category_id = $request->category_id;
-    $sql = "INSERT INTO product(product_name, product_price, product_image, product_quantity, product_usefor, product_description, category_id) 
-    VALUES ('$product_name','$product_price','$product_image','$product_quantity','$product_usefor','$product_description', '$category_id')";
+    $order_id = $request->order_id;
+    $product_id = $request->product_id;
+    $user_id = $request->user_id;
+ 
+    $sql = "INSERT INTO product_category (order_id, product_id) VALUES ('$order_id','$product_id')";
     if(mysqli_query($conn,$sql)){
  
         
