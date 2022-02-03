@@ -13,7 +13,7 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
 $request = json_decode($postdata);
 
-$category_id = $request->$category_id;
+$category_id = $request->category_id;
 
 	$sql = "SELECT * FROM product_category WHERE category_id='$category_id'";
     $exeSQL = mysqli_query($conn, $sql);

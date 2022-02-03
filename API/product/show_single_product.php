@@ -11,7 +11,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
     if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
 
-    $product_id = $request->$product_id;
+    $product_id = $request->product_id;
 
 	$sql = "SELECT * FROM product WHERE product_id='$product_id'";
     $exeSQL = mysqli_query($conn, $sql);
