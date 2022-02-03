@@ -24,7 +24,7 @@ $user_id = $request->user_id;
 				  'user_roll' =>  $row_product ['user_roll']
 				);
 			}
-			echo json_encode(["success"=>true,"fetchproduct"=>$json_array]);
+			echo json_encode(["success"=>true,"fetchuser"=>$json_array]);
 			return;
 		}
 		else{
