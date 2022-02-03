@@ -10,7 +10,7 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
-    $product_id = $request->$product_id;
+    $product_id = $request->product_id;
     $product_name = $request->product_name;
     $product_price = $request->product_price;
     $product_image = $request->product_image;

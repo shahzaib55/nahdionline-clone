@@ -10,7 +10,7 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
-    $category_id = $request->$category_id;
+    $category_id = $request->category_id;
     $category_name = $request->category_name;
     $category_description = $request->category_description;
  

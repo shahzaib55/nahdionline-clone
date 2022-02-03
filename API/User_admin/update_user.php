@@ -10,12 +10,14 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
+
+    $user_id = $request->user_id;
     $user_name = $request->user_name;
     $user_email = $request->user_email;
     $user_password = $request->user_password;
     $user_roll = $request->user_roll;
  
-    $sql = "UPDATE product SET user_name='$user_name', user_email='$user_email',user_password='$user_password',user_roll='$user_roll',
+    $sql = "UPDATE users_admin SET user_name='$user_name', user_email='$user_email',user_password='$user_password',user_roll='$user_roll',
      WHERE users_id='$users_id'";
     if(mysqli_query($conn,$sql)){
  
