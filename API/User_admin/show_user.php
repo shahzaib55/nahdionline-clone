@@ -18,7 +18,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 				  'user_roll' =>  $row_product ['user_roll']
 				);
 			}
-			echo json_encode(["success"=>true,"fetchproduct"=>$json_array]);
+			echo json_encode(["success"=>true,"fetchuser"=>$json_array]);
 			return;
 		}
 		else{
