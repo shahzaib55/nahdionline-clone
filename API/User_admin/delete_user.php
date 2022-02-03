@@ -9,9 +9,9 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 
 
-$data = json_decode(file_get_contents("php://input"));  
-	$users_id = $data->users_id;
-	$sql = "DELETE FROM users_admin WHERE users_id= .$users_id. ";
+$request = json_decode(file_get_contents("php://input"));  
+	$user_id =  $request->user_id;
+	$sql = "DELETE FROM users_admin WHERE user_id= '$user_id' ";
     
     
     if(mysqli_query($conn, $sql)){ 

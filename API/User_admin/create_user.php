@@ -15,7 +15,7 @@ if(isset($postdata) && !empty($postdata)){
     $user_email = $request->user_email;
     $user_password = $request->user_password;
     $user_roll = $request->user_roll;
-    $sql = "INSERT INTO users_admin (user_name, user_email, user_password, user_roll) VALUES ('$user_email','$user_password','$user_roll')";
+    $sql = "INSERT INTO users_admin (user_name, user_email, user_password, user_roll) VALUES ('$user_name','$user_email','$user_password','$user_roll')";
     if(mysqli_query($conn,$sql)){
     
         echo json_encode(["success"=>true,"msg"=>"inserted"]);
