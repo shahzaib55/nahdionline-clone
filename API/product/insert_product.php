@@ -19,12 +19,10 @@ if(isset($postdata) && !empty($postdata)){
     $product_description = $request->product_description;
     $category_id = $request->category_id;
 
-    $extension = pathinfo($_FILES['$product_image']['name'], PATHINFO_EXTENSION);
-    $new_image_name = time() . "." . $extension;
-    move_uploaded_file($_FILES['$product_image']['tmp_name'],'../images/' . $new_image_name);
     $sql = "INSERT INTO product(product_name, product_price, product_image, product_quantity, product_usefor, product_description, category_id) 
-    VALUES ('$product_name','$product_price','$new_image_name','$product_quantity','$product_usefor','$product_description', '$category_id')";
-    if(mysqli_query($conn,$sql)){
+    VALUES ('$product_name','$product_price','$product_image','$product_quantity','$product_usefor','$product_description', '$category_id')";
+   
+   if(mysqli_query($conn,$sql)){
  
         
         echo json_encode(["success"=>true,"msg"=>"inserted"]);
