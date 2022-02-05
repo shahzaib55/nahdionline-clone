@@ -12,44 +12,36 @@ if(isset($postdata)){
      
      //get json data
     $product_id = $request->product_id;
-    
+    $user_id = $request->user_id;
     //check if the product is already in cart
-    $sql ="SELECT * FROM Cart WHERE product_id = '$product_id'";
-    $exeSQL = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($exeSQL) > 0){
-
-        //fetch row into variable 
-        $row_cart = mysqli_fetch_array($exeSQL);
-
-        //store data in varriables
-        $price = $row_cart['product_price'];
-        $quantity = $row_cart['product_quantity'];
-        $total = $row_cart['total_bill'];
-
    
-        $update_quantity = $quantity + 1;
-        $update_total = $total + $price;
+    
+        $sql = "SELECT product_name,product_price FROM product WHERE product_id = '$product_id'";
 
-        $sql = "SELECT product_name FROM product WHERE product_id = '$product_id'";
+        $exeSQL = mysqli_query($conn, $sql);
+        $product_name = $exeSQL['product_name'];
+        $product_price = $exeSQL['product_price'];
+        $product_quantity = 1;
+        $total_bill = $product_price;
         
-    }
+        $sql = "INSERT INTO product_cart(product_id, product_name, product_quantity,product_price, total_bill,user_id) VALUES ('$product_id','$product_name','$product_quantity','$product_price', '$total_bill','$user_id')";
+     
+        if(mysqli_query($conn,$sql)){
+
+            echo json_encode(["success"=>true,"msg"=>"updated"]);
+            return;
+        }else{
+            echo json_encode(["success"=>false,"msg"=>"Some fields missing!"]);
+            return;
+        } 
+    
+     
+    
+}else{
+    echo json_encode(["success"=>false,"msg"=>"some fields missing"]);
+    return;
+} 
  
-    $sql = "INSERT INTO product_cart(product_id) VALUES ('$product_id')";
-    if(mysqli_query($conn,$sql)){
- 
-        
-        echo json_encode(["success"=>true,"msg"=>"inserted"]);
-		return;
-    }
-    else{
-        echo json_encode(["success"=>false,"msg"=>"failed"]);
-		return;
-    } 
-}
- else{
-    echo json_encode(["success"=>false,"msg"=>"Some fields missing!"]);
-	return;
-}  
 
 
 ?> 
