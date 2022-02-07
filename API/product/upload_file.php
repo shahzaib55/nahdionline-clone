@@ -12,7 +12,7 @@ if(isset($_FILES['upload_file']))
 
     $data = array(
 
-        'image_source' => "../images/" . $new_image_name
+        'image_source' => "/images/" . $new_image_name
      
     );
     echo json_encode($data);

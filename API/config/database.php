@@ -4,10 +4,10 @@ header("Access-Control-Allow-Headers: access");
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-$servername = "localhost:3307";
-$username = "root";
-$password = "";
-$database= "databas";
+$servername = "sql311.epizy.com";
+$username = "epiz_31009792";
+$password = "Qw358218910";
+$database= "epiz_31009792_beautyapp";
  
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
