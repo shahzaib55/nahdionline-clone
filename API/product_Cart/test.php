@@ -22,11 +22,10 @@ if(isset($postdata) && !empty($postdata)){
             $product_name = $row['product_name'];
             $product_price = $row['product_price'];
             $product_quantity = $row['product_quantity'];
-            $product_image = $row['product_image'];
             $total_bill = $product_price * $quantity;
-           
+            echo json_encode(["success"=>false,"msg"=>"select run"]);
         }else{
-            echo json_encode(["success"=>false,"msg"=>"product select failed"]);
+            echo json_encode(["success"=>false,"msg"=>"select failed"]);
                 
         }
         
@@ -52,19 +51,20 @@ if(isset($postdata) && !empty($postdata)){
        
                 if(mysqli_query($conn,$update_query)){
          
-                    echo json_encode(["success"=>true,"msg"=>"updated"]);
+                
+                    echo json_encode(["success"=>true,"msg"=>"inserted updated"]);
                     return;
                 }
                 else{
-                    echo json_encode(["success"=>false,"msg"=>"failed"]);
+                    echo json_encode(["success"=>false,"msg"=>"failed updated"]);
                     return;
                 } 
 
 
             }
             else{ 
-            $query = "INSERT INTO product_cart(product_id, product_name, product_quantity, product_price, total_bill, user_id, product_image) 
-            VALUES ('$product_id','$product_name','$quantity','$product_price', '$total_bill','$user_id','$product_image')";
+            $query = "INSERT INTO product_cart(product_id, product_name, product_quantity,product_price, total_bill,user_id) 
+            VALUES ('$product_id','$product_name','$quantity','$product_price', '$total_bill','$user_id')";
      
             if(mysqli_query($conn,$query)){
          

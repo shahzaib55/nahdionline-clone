@@ -1,10 +1,5 @@
 <?php
 require_once '../config/database.php';
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: access");
-header("Content-Type: application/json; charset=UTF-8");
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 
 	$sql = "SELECT * FROM product_category ORDER BY category_id ASC";
