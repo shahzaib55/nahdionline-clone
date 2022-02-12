@@ -14,10 +14,36 @@ if(isset($postdata) && !empty($postdata)){
     $product_usefor = serialize($request->product_usefor);
     $product_description = $request->product_description;
     $category_id = $request->category_id;
-    $sql = "UPDATE product SET product_name='$product_name',product_price='$product_price',product_image='$product_image'
+
+    //fetch old image path
+    $query = "SELECT product_image FROM product WHERE product_id= '$product_id' ";
+	$exeSQL = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($exeSQL);
+	$old_Image_Path = $row['product_image'];
+
+    //compare with new image path
+    if($product_image != $old_Image_Path){
+
+   
+
+    
+        
+        //delete old image from images folder
+        if (file_exists($old_Image_Path)) 
+               {
+                 unlink($old_Image_Path);
+                 
+                 //update image in images folder
+                 $extension = pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION);
+                 $new_image_name = time() . "." . $extension;
+                 move_uploaded_file($_FILES['product_image']['tmp_name'],'../images/' . $new_image_name);
+                 $product_image = "../images/" . $new_image_name;
+              }
+              
+
+              $sql = "UPDATE product SET product_name='$product_name',product_price='$product_price',product_image='$product_image'
     ,product_quantity='$product_quantity',product_usefor='$product_usefor', product_description='$product_description', category_id='$category_id' WHERE product_id='$product_id'";
     if(mysqli_query($conn,$sql)){
- 
         echo json_encode(["success"=>true,"msg"=>"updated"]);
 		return;
     }
@@ -26,6 +52,7 @@ if(isset($postdata) && !empty($postdata)){
 		return;
          
     }
+}
      
 }
 else{
