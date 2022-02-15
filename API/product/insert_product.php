@@ -1,7 +1,8 @@
 <?php
+//include connection
 require_once '../config/database.php';
 
- 
+ //get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
@@ -15,6 +16,7 @@ if(isset($postdata) && !empty($postdata)){
     $product_description = $request->product_description;
     $category_id = $request->category_id;
 
+    //store data query
     $sql = "INSERT INTO product(product_name, product_price, product_image, product_quantity, product_usefor, product_description, category_id) 
     VALUES ('$product_name','$product_price','$product_image','$product_quantity','$product_usefor','$product_description', '$category_id')";
    

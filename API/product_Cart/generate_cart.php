@@ -1,7 +1,8 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
- 
+//get data query 
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
@@ -12,12 +13,14 @@ if(isset($postdata) && !empty($postdata)){
     $quantity = $request->quantity;
     //check if the product is already in cart
    
-    
+    //select data query
         $sql = "SELECT * FROM product WHERE product_id = '$product_id'";
-
         $exeSQL = mysqli_query($conn, $sql);
+        
+        //check if any record found
         if(mysqli_num_rows($exeSQL) > 0){
 
+        //store data into variables
             $row = mysqli_fetch_array($exeSQL);
             $product_name = $row['product_name'];
             $product_price = $row['product_price'];
@@ -30,16 +33,21 @@ if(isset($postdata) && !empty($postdata)){
                 
         }
         
-        
+        //check the product quantity availble for sale
         if($product_quantity > $quantity)
         {
+            //select data query
             $sql ="SELECT * FROM product_cart WHERE product_id = '$product_id' AND user_id='$user_id'";
             $exeSQL = mysqli_query($conn, $sql);
+
+            //check if any record found
+            //if found then update 
             if(mysqli_num_rows($exeSQL) > 0){
 
 
                 $row = mysqli_fetch_array($exeSQL);
            
+                //store data into array
                 $product_price = $row['product_price'];
                 $product_quantity = $row['product_quantity'];
                 $total_bill = $row['total_bill'];
@@ -47,7 +55,8 @@ if(isset($postdata) && !empty($postdata)){
               
                 $new_quantity = $quantity;
                 $new_bill = ($product_price * $new_quantity);
-
+               
+                //update data query
                 $update_query = "UPDATE product_cart SET   product_quantity= '$new_quantity', total_bill='$new_bill' WHERE product_id ='$product_id' AND user_id='$user_id'";
        
                 if(mysqli_query($conn,$update_query)){
@@ -62,7 +71,10 @@ if(isset($postdata) && !empty($postdata)){
 
 
             }
+            //if no existing data found then insert new 
             else{ 
+
+                //insert data query
             $query = "INSERT INTO product_cart(product_id, product_name, product_quantity, product_price, total_bill, user_id, product_image) 
             VALUES ('$product_id','$product_name','$quantity','$product_price', '$total_bill','$user_id','$product_image')";
      

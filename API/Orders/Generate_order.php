@@ -1,33 +1,32 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
- 
+ //get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
      
      
-
-    $product_id = serilize($request->product_id);
-    $product_quantity = serilize($request->$product_quantity);
+  //GET data from json file
+    $product_id = serialize($request->product_id);
+    $product_quantity = serialize($request->product_quantity);
     $user_id = $request->user_id;
     $price = $request->price;
 
+  //fetch user information
     $query = "SELECT * FROM user_customer WHERE user_id='$user_id'";
-    $querySQL=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($exeSQL) > 0){
+    $querySQL=mysqli_query($conn,$query);
+    if(mysqli_num_rows($querySQL) > 0){
 
-        $row = mysqli_fetch_array($exeSQL);
+        $row = mysqli_fetch_array($querySQL);
         $user_firstname = $row['user_firstname'];
         $user_address = $row['user_address'];
 
-        $user_detail[] = array(
-            'user_id'   => $user_id,             
-            'user_firstname' => $user_firstname,          
-            'user_address' => $user_address 
-        );
-        serialize($user_detail);
-
+        //store user information into array
+        $user_detail = serialize([$user_id,$user_firstname,$user_address]); 
+        
+        //store data into database
         $sql = "INSERT INTO orders(product_id, product_quantity, price, user_detail) 
         VALUES ('$product_id','$product_quantity','$price','$user_detail')";
         if(mysqli_query($conn,$sql)){

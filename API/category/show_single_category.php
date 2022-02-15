@@ -1,19 +1,25 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
 
 
-
+//get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
 $request = json_decode($postdata);
 
 $category_id = $request->category_id;
 
+   //select data query
 	$sql = "SELECT * FROM product_category WHERE category_id='$category_id'";
     $exeSQL = mysqli_query($conn, $sql);
+
+	//check if any data found
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_category = mysqli_fetch_array($exeSQL)){ 
+
+				//store data into array
 				$json_array[] = array(
 				  'category_id' =>  $row_category ['category_id'],
 				  'category_name' =>  $row_category ['category_name'],

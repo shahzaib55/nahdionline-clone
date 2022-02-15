@@ -1,7 +1,8 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
- 
+ //get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
@@ -9,7 +10,8 @@ if(isset($postdata) && !empty($postdata)){
      
     $category_name = $request->category_name;
     $category_description = $request->category_description;
- 
+    
+  //store data query
     $sql = "INSERT INTO product_category (category_name, category_description) VALUES ('$category_name','$category_description')";
     if(mysqli_query($conn,$sql)){
  

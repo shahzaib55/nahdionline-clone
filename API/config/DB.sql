@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Feb 07, 2022 at 06:22 AM
+-- Generation Time: Feb 15, 2022 at 03:28 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `databas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(100) NOT NULL,
+  `product_id` varchar(100) NOT NULL,
+  `product_quantity` varchar(100) NOT NULL,
+  `price` int(100) NOT NULL,
+  `user_detail` varchar(250) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `product_id`, `product_quantity`, `price`, `user_detail`, `date`) VALUES
+(22, 'a:3:{i:0;i:1;i:1;i:4;i:2;i:3;}', 'a:3:{i:0;i:3;i:1;i:1;i:2;i:5;}', 600, 'a:3:{i:0;s:1:\"1\";i:1;s:3:\"ali\";i:2;s:13:\"lahore,punjab\";}', '2022-02-15 14:26:15');
 
 -- --------------------------------------------------------
 
@@ -43,9 +65,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`, `product_quantity`, `product_usefor`, `product_description`, `category_id`) VALUES
-(4, 'soap', 70, 'image/pro.png', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
+(4, 'soap', 70, '../images/1644690345.', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
 (5, 'fab', 40, 'F:/logo.png', 5, 'a:2:{i:0;s:5:\"black\";i:1;s:5:\"white\";}', 'this is product', 2);
-
 
 -- --------------------------------------------------------
 
@@ -69,7 +90,8 @@ CREATE TABLE `product_cart` (
 --
 
 INSERT INTO `product_cart` (`cart_id`, `product_id`, `product_name`, `product_quantity`, `product_price`, `total_bill`, `user_id`, `product_image`) VALUES
-(1, 4, 'soap', 1, 70, 70, 1, '../images/logo.png');
+(1, 4, 'soap', 1, 70, 70, 1, ''),
+(7, 5, 'fab', 3, 40, 120, 1, 'F:/logo.png');
 
 -- --------------------------------------------------------
 
@@ -127,12 +149,26 @@ CREATE TABLE `user_customer` (
   `user_lastname` varchar(100) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `user_mobileno` bigint(50) NOT NULL,
-  `user_password` varchar(100) NOT NULL
+  `user_password` varchar(100) NOT NULL,
+  `user_address` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_customer`
+--
+
+INSERT INTO `user_customer` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_mobileno`, `user_password`, `user_address`) VALUES
+(1, 'ali', 'haider', 'ali@gmail.com', 3045655778, '123', 'lahore,punjab');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -170,6 +206,12 @@ ALTER TABLE `user_customer`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
@@ -179,7 +221,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `product_cart`
 --
 ALTER TABLE `product_cart`
-  MODIFY `cart_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cart_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -197,7 +239,7 @@ ALTER TABLE `users_admin`
 -- AUTO_INCREMENT for table `user_customer`
 --
 ALTER TABLE `user_customer`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

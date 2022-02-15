@@ -195,16 +195,26 @@
 			"item": [
 				{
 					"name": "user_login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_email\" : \"bilal@gmail.com\",\r\n    \"user_password\" : \"bilal333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/user_customer/login.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/user_customer/login.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -217,16 +227,26 @@
 				},
 				{
 					"name": "user_signup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_firstname\" : \"bilal\",\r\n    \"user_lastname\" : \"haider\",\r\n    \"user_email\" : \"bilal@gmail.com\",\r\n    \"user_mobileno\" : \"0305654321\",\r\n    \"user_password\" : \"bilal333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/user_customer/signup.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/user_customer/signup.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -257,12 +277,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/category/insert_category.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/category/insert_category.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -279,12 +297,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/category/Show_category.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/category/Show_category.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -313,12 +329,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/category/show_single_category.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/category/show_single_category.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -344,12 +358,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/category/update_category.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/category/update_category.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -375,15 +387,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com//API/category/delete_category.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/category/delete_category.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
-								"",
 								"API",
 								"category",
 								"delete_category.php"
@@ -434,12 +443,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product/Show_product.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product/Show_product.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -468,12 +475,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product/show_single_product.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product/show_single_product.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -491,7 +496,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_id\" : \"4\",\r\n    \"product_name\" : \"soap\",\r\n    \"product_price\" : \"70\",\r\n    \"product_image\" : \"image/pro.png\",\r\n    \"product_quantity\" : \"12\",\r\n    \"product_usefor\" : [\"black\",\"white\",\"blue\"],\r\n    \"product_description\" : \"this is product\",\r\n    \"category_id\" : \"2\"\r\n    \r\n    \r\n}",
+							"raw": "{\r\n    \"product_id\" : \"4\",\r\n    \"product_name\" : \"soap\",\r\n    \"product_price\" : \"70\",\r\n    \"product_image\" : \"../images/pro.png\",\r\n    \"product_quantity\" : \"12\",\r\n    \"product_usefor\" : [\"black\",\"white\",\"blue\"],\r\n    \"product_description\" : \"this is product\",\r\n    \"category_id\" : \"2\"\r\n    \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -499,12 +504,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product/update_product.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product/update_product.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -530,12 +533,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product/delete_product.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product/delete_product.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -566,12 +567,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product_Cart/generate_cart.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product_Cart/generate_cart.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -600,12 +599,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product_Cart/show_cart.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product_Cart/show_cart.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -631,12 +628,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/API/product_Cart/delete_cart.php",
-							"protocol": "https",
+							"raw": "http://localhost/API/product_Cart/delete_cart.php",
+							"protocol": "http",
 							"host": [
-								"beautypredictor",
-								"000webhostapp",
-								"com"
+								"localhost"
 							],
 							"path": [
 								"API",
@@ -655,8 +650,139 @@
 				{
 					"name": "generate_order",
 					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\" : [1,4,3],\r\n    \"product_quantity\" : [3,1,5],\r\n    \"user_id\" : \"1\",\r\n    \"price\" : \"600\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/API/Orders/Generate_order.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"API",
+								"Orders",
+								"Generate_order.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_order",
+					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost/API/Orders/show_order.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"API",
+								"Orders",
+								"show_order.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_single_order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\" : \"21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/API/Orders/show_single_order.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"API",
+								"Orders",
+								"show_single_order.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\" : \"21\",\r\n    \"product_id\" : [2,1,5],\r\n    \"product_quantity\" : [2,2,2],\r\n    \"price\" : \"800\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/API/Orders/update_order.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"API",
+								"Orders",
+								"update_order.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\" : \"21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/API/Orders/delete_order.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"API",
+								"Orders",
+								"delete_order.php"
+							]
+						}
 					},
 					"response": []
 				}

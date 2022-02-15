@@ -1,13 +1,14 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
-
+//fetch data from json file
     $postdata = file_get_contents("php://input");
     if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
 
     $product_id = $request->product_id;
-
+//select data query
 	$sql = "SELECT * FROM product WHERE product_id='$product_id'";
     $exeSQL = mysqli_query($conn, $sql);
 		if(mysqli_num_rows($exeSQL) > 0){

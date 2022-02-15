@@ -1,7 +1,7 @@
 <?php
 require_once '../config/database.php';
 
- 
+ //get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
@@ -9,7 +9,8 @@ if(isset($postdata) && !empty($postdata)){
     $category_id = $request->category_id;
     $category_name = $request->category_name;
     $category_description = $request->category_description;
- 
+
+ //update data query
     $sql = "UPDATE product_category SET category_name='$category_name', category_description='$category_description' WHERE category_id='$category_id'";
     if(mysqli_query($conn,$sql)){
  

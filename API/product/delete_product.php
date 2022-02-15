@@ -1,27 +1,17 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
 
-
+//get data from json file
 $data = json_decode(file_get_contents("php://input"));  
 	$product_id = $data->product_id;
-    $query = "SELECT product_image FROM product WHERE product_id= '$product_id' ";
-	$exeSQL = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($exeSQL);
-	$filePath = $row['product_image'];
+
+	//delete data query
 	$sql = "DELETE FROM product WHERE product_id= '$product_id' ";
     
     
     if(mysqli_query($conn, $sql)){ 
-		if (file_exists($filePath)) 
-               {
-                 unlink($filePath);
-                  
-              }
-              else
-              {
-               echo "File does not exists"; 
-              }
 		echo json_encode(["success"=>true]);
 		return;
 	}

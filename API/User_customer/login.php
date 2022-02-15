@@ -1,7 +1,8 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
- 
+ //get data from json file
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
     $request = json_decode($postdata);
@@ -9,10 +10,14 @@ if(isset($postdata) && !empty($postdata)){
      
     $user_email = $request->user_email;
     $user_password = $request->user_password;
+
+    //select data query
     $sql = "SELECT * FROM user_customer WHERE  user_email='$user_email'  AND user_password='$user_password'";
     $exeSQL = mysqli_query($conn, $sql);
+    //check if any record found
     if(mysqli_num_rows($exeSQL) > 0){
         while($row_user = mysqli_fetch_array($exeSQL)){ 
+            //store data into array
             $json_array[] = array(
               'user_id' =>  $row_user ['user_id'],
               'user_firstname' =>  $row_user ['user_firstname'],

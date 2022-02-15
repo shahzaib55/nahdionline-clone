@@ -1,7 +1,7 @@
 <?php
 
 
-
+//check if the field is set
 if(isset($_FILES['upload_file']))
 {
     $extension = pathinfo($_FILES['upload_file']['name'], PATHINFO_EXTENSION);
@@ -12,7 +12,7 @@ if(isset($_FILES['upload_file']))
 
     $data = array(
 
-        'image_source' => "/images/" . $new_image_name
+        'image_source' => "../images/" . $new_image_name
      
     );
     echo json_encode($data);

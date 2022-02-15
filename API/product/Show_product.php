@@ -1,12 +1,17 @@
 <?php
+//include connection file
 require_once '../config/database.php';
 
 
-
+//select data query
 	$sql = "SELECT * FROM product ORDER BY product_id ASC";
     $exeSQL = mysqli_query($conn, $sql);
+
+	//check if any record found
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
+
+				//store data into array
 				$json_array[] = array(
 				  'product_id' =>  $row_product ['product_id'],
 				  'product_name' =>  $row_product ['product_name'],
