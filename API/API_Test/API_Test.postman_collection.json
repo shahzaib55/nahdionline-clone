@@ -243,7 +243,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/API/user_customer/signup.php",
+							"raw": "http://localhost/API/User_customer/signup.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -794,7 +794,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://beautypredictor.000webhostapp.com/API/config/database.php",
+					"raw": "http://localhost/API/config/database.php",
 					"protocol": "https",
 					"host": [
 						"beautypredictor",
