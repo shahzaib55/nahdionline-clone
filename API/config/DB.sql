@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Feb 15, 2022 at 03:28 PM
+-- Generation Time: Feb 20, 2022 at 04:59 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -65,8 +65,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`, `product_quantity`, `product_usefor`, `product_description`, `category_id`) VALUES
-(4, 'soap', 70, '../images/1644690345.', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
-(5, 'fab', 40, 'F:/logo.png', 5, 'a:2:{i:0;s:5:\"black\";i:1;s:5:\"white\";}', 'this is product', 2);
+(4, 'Moistfull collagen cream', 70, '/images/cream.jpg', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
+(10, 'Volcanic calming pore clay mask\r\n', 80, '/images/mask.jpg', 40, 'oily skin,skin,skin', 'this is description', 4);
 
 -- --------------------------------------------------------
 
@@ -90,8 +90,7 @@ CREATE TABLE `product_cart` (
 --
 
 INSERT INTO `product_cart` (`cart_id`, `product_id`, `product_name`, `product_quantity`, `product_price`, `total_bill`, `user_id`, `product_image`) VALUES
-(1, 4, 'soap', 1, 70, 70, 1, ''),
-(7, 5, 'fab', 3, 40, 120, 1, 'F:/logo.png');
+(1, 4, 'Moistfull collagen cream', 1, 70, 70, 1, '/images/cream.jpg');
 
 -- --------------------------------------------------------
 
@@ -110,10 +109,10 @@ CREATE TABLE `product_category` (
 --
 
 INSERT INTO `product_category` (`category_id`, `category_name`, `category_description`) VALUES
-(1, 'yyy', 'this is description'),
-(2, 'MAC', 'description changed'),
-(4, 'acer', 'this is description'),
-(5, 'acer', 'this is description');
+(1, 'Lotion', 'this is description'),
+(2, 'Cream', 'description changed'),
+(4, 'Mask', 'this is description'),
+(5, 'Cream', 'this is description');
 
 -- --------------------------------------------------------
 
@@ -158,7 +157,9 @@ CREATE TABLE `user_customer` (
 --
 
 INSERT INTO `user_customer` (`user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_mobileno`, `user_password`, `user_address`) VALUES
-(1, 'ali', 'haider', 'ali@gmail.com', 3045655778, '123', 'lahore,punjab');
+(1, 'ali', 'haider', 'ali@gmail.com', 3045655778, '123', 'lahore,punjab'),
+(2, 'bilal', 'haider', 'bilal@gmail.com', 305654321, 'bilal333', 'kpk,pakistan'),
+(3, 'bilal', 'haider', 'bilal@gmail.com', 305654321, 'bilal333', 'peshawer,pakistan');
 
 --
 -- Indexes for dumped tables
@@ -215,7 +216,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_cart`
@@ -239,7 +240,7 @@ ALTER TABLE `users_admin`
 -- AUTO_INCREMENT for table `user_customer`
 --
 ALTER TABLE `user_customer`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
