@@ -1,5 +1,6 @@
 <?php
-
+//include connection file
+require_once '../config/database.php';
 
 //check if the field is set
 if(isset($_FILES['upload_file']))
