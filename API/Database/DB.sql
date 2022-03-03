@@ -31,7 +31,7 @@ CREATE TABLE `orders` (
   `order_id` int(100) NOT NULL,
   `product_id` varchar(100) NOT NULL,
   `product_quantity` varchar(100) NOT NULL,
-  `price` int(100) NOT NULL,
+  `price` double NOT NULL,
   `user_detail` varchar(250) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -52,7 +52,7 @@ INSERT INTO `orders` (`order_id`, `product_id`, `product_quantity`, `price`, `us
 CREATE TABLE `product` (
   `product_id` int(100) NOT NULL,
   `product_name` varchar(100) NOT NULL,
-  `product_price` int(100) NOT NULL,
+  `product_price` double NOT NULL,
   `product_image` varchar(100) NOT NULL,
   `product_quantity` int(100) NOT NULL,
   `product_usefor` varchar(250) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `product_cart` (
   `product_id` int(100) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_quantity` int(100) NOT NULL,
-  `product_price` int(100) NOT NULL,
+  `product_price` double NOT NULL,
   `total_bill` int(100) NOT NULL,
   `user_id` int(100) NOT NULL,
   `product_image` varchar(100) NOT NULL

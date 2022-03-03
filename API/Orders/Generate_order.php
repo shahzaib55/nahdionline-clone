@@ -32,8 +32,9 @@ if(isset($postdata) && !empty($postdata)){
         if(mysqli_query($conn,$sql)){
      
             
-            echo json_encode(["success"=>true,"msg"=>"inserted"]);
-            return;
+            // echo json_encode(["success"=>true,"msg"=>"inserted"]);
+            $_SESSION["bill"] = $price;
+            header("Location: http://localhost/API/paypal_integration/request.php");
         }
         else{
             echo json_encode(["success"=>false,"msg"=>"failed"]);
