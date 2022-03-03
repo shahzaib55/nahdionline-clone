@@ -1,5 +1,8 @@
 {
     "require": {
+        "php": "^7.4.13",
         "paypal/rest-api-sdk-php": "1.13"
+        
     }
 }
+
