@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Feb 20, 2022 at 04:59 AM
+-- Generation Time: Mar 03, 2022 at 05:22 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -66,7 +66,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`, `product_quantity`, `product_usefor`, `product_description`, `category_id`) VALUES
 (4, 'Moistfull collagen cream', 70, '/images/cream.jpg', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
-(10, 'Volcanic calming pore clay mask\r\n', 80, '/images/mask.jpg', 40, 'oily skin,skin,skin', 'this is description', 4);
+(10, 'Volcanic calming pore clay mask\r\n', 80, '/images/mask.jpg', 40, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is description', 4);
 
 -- --------------------------------------------------------
 
@@ -216,7 +216,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product_cart`
