@@ -12,8 +12,19 @@ if(isset($postdata) && !empty($postdata)){
     $product_id = serialize($request->product_id);
     $product_quantity = serialize($request->product_quantity);
     $user_id = $request->user_id;
-    $price = $request->price;
+    $bill = 0;
 
+    //fetch carts only for specific user
+    $sqlquery = "SELECT * FROM product_cart WHERE user_id='$user_id'";
+    $exeSQL = mysqli_query($conn, $sqlquery);
+		if(mysqli_num_rows($exeSQL) > 0){
+			while($row_cart = mysqli_fetch_array($exeSQL)){ 
+
+				//store data into array
+                $bill = $bill + $row_cart['total_bill'];
+				
+			}
+        }
   //fetch user information
     $query = "SELECT * FROM user_customer WHERE user_id='$user_id'";
     $querySQL=mysqli_query($conn,$query);
@@ -28,13 +39,19 @@ if(isset($postdata) && !empty($postdata)){
         
         //store data into database
         $sql = "INSERT INTO orders(product_id, product_quantity, price, user_detail) 
-        VALUES ('$product_id','$product_quantity','$price','$user_detail')";
+        VALUES ('$product_id','$product_quantity','$bill','$user_detail')";
         if(mysqli_query($conn,$sql)){
      
-            
+            $qry = "DELETE FROM product_cart WHERE user_id= '$user_id' ";
+          
+    
+            if(mysqli_query($conn, $qry )){ 
+                session_start();
+                $_SESSION["bill"] = $bill;
+                header("Location: http://localhost/API/paypal_integration/request.php");
+	        }
             // echo json_encode(["success"=>true,"msg"=>"inserted"]);
-            $_SESSION["bill"] = $price;
-            header("Location: http://localhost/API/paypal_integration/request.php");
+            
         }
         else{
             echo json_encode(["success"=>false,"msg"=>"failed"]);

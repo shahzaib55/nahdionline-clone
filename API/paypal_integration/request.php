@@ -14,7 +14,7 @@ $payer = new Payer();
 $payer->setPaymentMethod('paypal');
 
 // Set some example data for the payment.
-// session_start();
+
 $currency = 'USD';
 session_start();
 
