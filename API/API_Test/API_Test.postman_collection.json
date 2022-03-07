@@ -245,7 +245,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://beautypredictor.000webhostapp.com/User_customer/signup.php",
+							"raw": "https://beautypredictor.000webhostapp.com/API/User_customer/signup.php",
 							"protocol": "https",
 							"host": [
 								"beautypredictor",
@@ -253,8 +253,31 @@
 								"com"
 							],
 							"path": [
+								"API",
 								"User_customer",
 								"signup.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://beautypredictor.000webhostapp.com/API/User_customer/show_user.php",
+							"protocol": "https",
+							"host": [
+								"beautypredictor",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"API",
+								"User_customer",
+								"show_user.php"
 							]
 						}
 					},
@@ -409,6 +432,28 @@
 								"API",
 								"Category",
 								"delete_category.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category_list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://beautypredictor.000webhostapp.com/API/Category/category_list.php",
+							"protocol": "https",
+							"host": [
+								"beautypredictor",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"API",
+								"Category",
+								"category_list.php"
 							]
 						}
 					},
