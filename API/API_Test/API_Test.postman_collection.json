@@ -625,7 +625,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_id\" : \"5\",\r\n    \"user_id\" : \"1\",\r\n    \"quantity\" : \"1\"\r\n}",
+							"raw": "{\r\n    \"product_id\" : \"4\",\r\n    \"user_id\" : \"1\",\r\n    \"quantity\" : \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -726,7 +726,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_id\" : [1,4,3],\r\n    \"product_quantity\" : [3,1,5],\r\n    \"user_id\" : \"1\"\r\n\r\n}",
+							"raw": "{\r\n    \"product_detail\" : [{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,      \"product_quantity\":3,\"product_price\":30}],\r\n    \"user_id\" : \"1\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
