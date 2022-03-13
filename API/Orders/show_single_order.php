@@ -17,12 +17,11 @@ $postdata = file_get_contents("php://input");
 			while($row_order = mysqli_fetch_array($exeSQL)){ 
 				//store data into array
 				$json_array[] = array(
-				  'order_id' =>  $row_order ['order_id'],
-                  'product_id' =>  unserialize($row_order ['product_id']),
-				  'product_quantity' => unserialize($row_order ['product_quantity']),
-				  'price' =>  $row_order ['price'],
-				  'user_detail' => unserialize($row_order['user_detail']),
-				  'date' => $row_order['date']
+					'order_id' =>  $row_order ['order_id'],
+					'product_detail' =>  json_decode($row_order ['product_detail']),
+					'user_detail' => json_decode($row_order['user_detail']),
+					'total_bill' =>  $row_order ['total_bill'],
+					'Date' => $row_order['Date']
 				  
 				);
 			}
