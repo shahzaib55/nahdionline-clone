@@ -813,7 +813,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_id\" : \"21\",\r\n    \"product_id\" : [2,1,5],\r\n    \"product_quantity\" : [2,2,2],\r\n    \"price\" : \"800\"\r\n\r\n}",
+							"raw": "{\r\n    \"order_id\" : \"21\",\r\n    \"product_detail\" : [{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,      \"product_quantity\":3,\"product_price\":30}],\r\n    \"user_detail\" : [{\"user_id\":1,\"user_firstname\":\"Ali\",\"user_address\":\"lahore,punjab\"}],\r\n    \"bill\" : \"800\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
