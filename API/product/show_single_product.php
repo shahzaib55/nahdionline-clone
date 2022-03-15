@@ -19,7 +19,7 @@ require_once '../config/database.php';
 				  'product_price' =>  $row_product ['product_price'],
 				  'product_image' =>  $row_product ['product_image'],
 				  'product_quantity' =>  $row_product ['product_quantity'],
-				  'product_usefor' =>  unserialize($row_product ['product_usefor']),
+				  'product_usefor' =>  json_decode($row_product ['product_usefor']),
 				  'product_description' =>  $row_product ['product_description']
 				);
 			}
