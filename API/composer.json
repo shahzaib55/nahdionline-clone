@@ -1,8 +1,10 @@
 {
-    "require": {
-        "php": "^7.4.13",
-        "paypal/rest-api-sdk-php": "1.13"
-        
-    }
+  "require": {
+    "php": "^7.4.13",
+    "paypal/rest-api-sdk-php": "1.13"
+  },
+  "post-install-cmd": [
+    "php artisan clear-compiled",
+    "chmod -R 777 public/"
+  ]
 }
-
