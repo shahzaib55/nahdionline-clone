@@ -641,6 +641,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "select_category_vise_product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category_id\" : \"2\"\r\n}"
+						},
+						"url": {
+							"raw": "https://beautypredictor.000webhostapp.com/API/Product/select_category_product.php",
+							"protocol": "https",
+							"host": [
+								"beautypredictor",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"API",
+								"Product",
+								"select_category_product.php"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
