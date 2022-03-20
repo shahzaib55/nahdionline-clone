@@ -14,7 +14,7 @@ $postdata = file_get_contents("php://input");
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
 				$json_array[] = array(
-
+                  'cart_id' => $row_product ['cart_id'],
 				  'product_name' =>  $row_product ['product_name'],
 				  'product_quantity' =>  $row_product ['product_quantity'],
 				  'product_price' =>  $row_product ['product_price'],
