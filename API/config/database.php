@@ -5,10 +5,10 @@ header("Access-Control-Allow-Headers: access");
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT');
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-$servername = "mysqlsrv.dcs.bbk.ac.uk";
-$username = "asaie01";
-$password = "bbkmysql";
-$database= "asaie01own";
+$servername = "databases.000webhost.com";
+$username = "id18414943_root";
+$password = "Database123@";
+$database= "id18414943_beautiproducts";
 
  
 // Create connection
