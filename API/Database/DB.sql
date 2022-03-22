@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Mar 15, 2022 at 05:16 PM
+-- Generation Time: Mar 22, 2022 at 07:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -40,7 +40,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `product_detail`, `user_detail`, `total_bill`, `Date`) VALUES
-(1, '[[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]]\r\n', '\r\n[{\"user_id\":\"1\",\"user_firstname\":\"ali\",\"user_address\":\"lahore,punjab\"}]\r\n', 700.65, '2022-03-15 15:02:40');
+(1, '[[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]]\r\n', '\r\n[{\"user_id\":\"1\",\"user_firstname\":\"ali\",\"user_address\":\"lahore,punjab\"}]\r\n', 700.65, '2022-03-15 15:02:40'),
+(2, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 140, '2022-03-21 19:55:51'),
+(3, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:33:56'),
+(4, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:34:56'),
+(5, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:36:22');
 
 -- --------------------------------------------------------
 
@@ -83,13 +87,6 @@ CREATE TABLE `product_cart` (
   `user_id` int(30) NOT NULL,
   `product_image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_cart`
---
-
-INSERT INTO `product_cart` (`cart_id`, `product_id`, `product_name`, `product_quantity`, `product_price`, `total_bill`, `user_id`, `product_image`) VALUES
-(1, 4, 'Moistfull collagen cream', 2, 70, 140, 1, '######');
 
 -- --------------------------------------------------------
 
@@ -209,7 +206,7 @@ ALTER TABLE `user_customer`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`

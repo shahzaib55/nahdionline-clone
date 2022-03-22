@@ -9,7 +9,7 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
 $request = json_decode($postdata);
 
-$product_id = $request->product_id;
+$category_id = $request->category_id;
 
    //select data query
 	$sql = "SELECT * FROM product WHERE category_id='$category_id'";
@@ -17,7 +17,7 @@ $product_id = $request->product_id;
 
 	//check if any data found
 		if(mysqli_num_rows($exeSQL) > 0){
-			while($row_category = mysqli_fetch_array($exeSQL)){ 
+			while($row_product = mysqli_fetch_array($exeSQL)){ 
 
 				//store data into array
 				$json_array[] = array(
