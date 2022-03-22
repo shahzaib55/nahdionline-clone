@@ -33,7 +33,7 @@ try {
         
         if ($data['payment_status'] === 'approved') {
             // Payment successfully added, redirect to the payment complete page.
-            header('Location: http://localhost/API/paypal_integration/success.php');
+            header('Location: https://beautypredictor.000webhostapp.com/API/paypal_integration/success.php');
             exit(1);
         } else {
             // Payment failed
