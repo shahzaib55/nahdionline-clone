@@ -6,10 +6,12 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT');
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
   
-$servername = "mysqlsrv.dcs.bbk.ac.uk";
-$username = "asaie01";
-$password = "bbkmysql";
-$database= "asaie01own";
+$servername = "remotemysql.com:3306";
+$username = "z6wrFpPwtG";
+$password = "9grwvrCf1m";
+$database= "z6wrFpPwtG";
+
+
 
  
 // Create connection
