@@ -1,5 +1,5 @@
 <?php
-require_once '../config/database.php';
+
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 
