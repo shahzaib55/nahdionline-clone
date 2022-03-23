@@ -45,7 +45,7 @@ $payment->setIntent('sale')
 try {
     $payment->create($apiContext);
 } catch (Exception $e) {
-    throw new Exception('Unable to create link for payment');
+    throw new Exception($e);
 }
 
 header('location:' . $payment->getApprovalLink());
