@@ -1,6 +1,6 @@
 <?php
-//include connection file
-require_once '../config/database.php';
+
+
 use PayPal\Api\Amount;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
