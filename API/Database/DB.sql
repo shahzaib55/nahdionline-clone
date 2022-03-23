@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Mar 03, 2022 at 05:22 PM
+-- Generation Time: Mar 22, 2022 at 07:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -28,20 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(100) NOT NULL,
-  `product_id` varchar(100) NOT NULL,
-  `product_quantity` varchar(100) NOT NULL,
-  `price` double NOT NULL,
-  `user_detail` varchar(250) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `order_id` int(30) NOT NULL,
+  `product_detail` varchar(1000) NOT NULL,
+  `user_detail` varchar(1000) NOT NULL,
+  `total_bill` double NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `product_id`, `product_quantity`, `price`, `user_detail`, `date`) VALUES
-(22, 'a:3:{i:0;i:1;i:1;i:4;i:2;i:3;}', 'a:3:{i:0;i:3;i:1;i:1;i:2;i:5;}', 600, 'a:3:{i:0;s:1:\"1\";i:1;s:3:\"ali\";i:2;s:13:\"lahore,punjab\";}', '2022-02-15 14:26:15');
+INSERT INTO `orders` (`order_id`, `product_detail`, `user_detail`, `total_bill`, `Date`) VALUES
+(1, '[[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]]\r\n', '\r\n[{\"user_id\":\"1\",\"user_firstname\":\"ali\",\"user_address\":\"lahore,punjab\"}]\r\n', 700.65, '2022-03-15 15:02:40'),
+(2, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 140, '2022-03-21 19:55:51'),
+(3, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:33:56'),
+(4, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:34:56'),
+(5, '[{\"product_id\":1,\"product_quantity\":3,\"product_price\":30},{\"product_id\":1,\"product_quantity\":3,\"product_price\":30}]', '[\"1\",\"ali\",\"lahore,punjab\"]', 0, '2022-03-22 05:36:22');
 
 -- --------------------------------------------------------
 
@@ -65,8 +68,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_image`, `product_quantity`, `product_usefor`, `product_description`, `category_id`) VALUES
-(4, 'Moistfull collagen cream', 70, '/images/cream.jpg', 12, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is product', 2),
-(10, 'Volcanic calming pore clay mask\r\n', 80, '/images/mask.jpg', 40, 'a:3:{i:0;s:5:\"black\";i:1;s:5:\"white\";i:2;s:4:\"blue\";}', 'this is description', 4);
+(4, 'Moistfull collagen cream', 70, '/images/logo.png', 5, '[\"black\",\"white\",\"pink\"]', 'this is product', 2),
+(10, 'Volconic calming pore clay mask', 80, '/images/logo.png', 10, '[\"black\",\"white\",\"green\"]', 'this is product', 2);
 
 -- --------------------------------------------------------
 
@@ -75,22 +78,15 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_i
 --
 
 CREATE TABLE `product_cart` (
-  `cart_id` int(100) NOT NULL,
-  `product_id` int(100) NOT NULL,
-  `product_name` varchar(100) NOT NULL,
-  `product_quantity` int(100) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `product_id` int(30) NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `product_quantity` int(30) NOT NULL,
   `product_price` double NOT NULL,
-  `total_bill` int(100) NOT NULL,
-  `user_id` int(100) NOT NULL,
-  `product_image` varchar(100) NOT NULL
+  `total_bill` double NOT NULL,
+  `user_id` int(30) NOT NULL,
+  `product_image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_cart`
---
-
-INSERT INTO `product_cart` (`cart_id`, `product_id`, `product_name`, `product_quantity`, `product_price`, `total_bill`, `user_id`, `product_image`) VALUES
-(1, 4, 'Moistfull collagen cream', 1, 70, 70, 1, '/images/cream.jpg');
 
 -- --------------------------------------------------------
 
@@ -210,19 +206,19 @@ ALTER TABLE `user_customer`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `order_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product_cart`
 --
 ALTER TABLE `product_cart`
-  MODIFY `cart_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_category`

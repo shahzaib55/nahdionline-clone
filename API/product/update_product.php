@@ -12,7 +12,7 @@ if(isset($postdata) && !empty($postdata)){
     $product_price = $request->product_price;
     $product_image = $request->product_image;
     $product_quantity = $request->product_quantity;
-    $product_usefor = serialize($request->product_usefor);
+    $product_usefor = json_encode($request->product_usefor);
     $product_description = $request->product_description;
     $category_id = $request->category_id;
 

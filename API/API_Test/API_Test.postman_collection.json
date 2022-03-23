@@ -471,7 +471,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_name\" : \"fab\",\r\n    \"product_price\" : \"40\",\r\n    \"product_image\" : \"/images/logo.png\",\r\n    \"product_quantity\" : \"5\",\r\n    \"product_usefor\" : [\"black\",\"white\"],\r\n    \"product_description\" : \"this is product\",\r\n    \"category_id\" : \"2\"\r\n    \r\n    \r\n}",
+							"raw": "{\r\n    \"product_name\" : \"Volconic calming pore clay mask\",\r\n    \"product_price\" : \"80\",\r\n    \"product_image\" : \"/images/logo.png\",\r\n    \"product_quantity\" : \"10\",\r\n    \"product_usefor\" : [\"black\",\"white\",\"green\"],\r\n    \"product_description\" : \"this is product\",\r\n    \"category_id\" : \"2\"\r\n    \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -608,6 +608,64 @@
 								"API",
 								"Product",
 								"delete_product.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select_product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_usefor\" : [\"bl\",\"green\",\"pi\"]\r\n}"
+						},
+						"url": {
+							"raw": "https://beautypredictor.000webhostapp.com/API/Product/select_product.php",
+							"protocol": "https",
+							"host": [
+								"beautypredictor",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"API",
+								"Product",
+								"select_product.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select_category_vise_product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category_id\" : \"2\"\r\n}"
+						},
+						"url": {
+							"raw": "https://beautypredictor.000webhostapp.com/API/Product/select_category_product.php",
+							"protocol": "https",
+							"host": [
+								"beautypredictor",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"API",
+								"Product",
+								"select_category_product.php"
 							]
 						}
 					},

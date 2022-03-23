@@ -9,8 +9,7 @@ if(isset($postdata) && !empty($postdata)){
      
      
   //GET data from json file
-    $product_id = serialize($request->product_id);
-    $product_quantity = serialize($request->product_quantity);
+    $product_detail= json_encode($request->product_detail);
     $user_id = $request->user_id;
     $bill = 0;
 
@@ -35,20 +34,24 @@ if(isset($postdata) && !empty($postdata)){
         $user_address = $row['user_address'];
 
         //store user information into array
-        $user_detail = serialize([$user_id,$user_firstname,$user_address]); 
+        $user_detail = json_encode([$user_id,$user_firstname,$user_address]); 
         
         //store data into database
-        $sql = "INSERT INTO orders(product_id, product_quantity, price, user_detail) 
-        VALUES ('$product_id','$product_quantity','$bill','$user_detail')";
+        $sql = "INSERT INTO orders(product_detail, user_detail, total_bill) 
+        VALUES ('$product_detail','$user_detail','$bill')";
         if(mysqli_query($conn,$sql)){
      
             $qry = "DELETE FROM product_cart WHERE user_id= '$user_id' ";
           
     
             if(mysqli_query($conn, $qry )){ 
+
                 session_start();
-                $_SESSION["bill"] = $bill;
-                header("Location: http://localhost/API/paypal_integration/request.php");
+                $_SESSION['bill'] = $bill;
+              
+                header("Location: https://beautypredictor.000webhostapp.com/API/paypal_integration/request.php");
+	      
+	       //ob_end_clean();
 	        }
             // echo json_encode(["success"=>true,"msg"=>"inserted"]);
             
@@ -69,7 +72,4 @@ if(isset($postdata) && !empty($postdata)){
  else{
     echo json_encode(["success"=>false,"msg"=>"Please fill all the required fields!"]);
 	return;
-}  
-
-
-?> 
+}?>

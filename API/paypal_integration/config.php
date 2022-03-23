@@ -14,16 +14,16 @@ $enableSandbox = true;
 $paypalConfig = [
     'client_id' => 'AcoYP-l9EAe-YzmABUMCUbpINMa16uS_1L6qliZqHEEFCkfOek8NKXSqsSodMPmqNonyitbmryfAruRk',
     'client_secret' => 'ENUXnnWd5P24RGIsxyOYxfLDS7E9AmExD4CzwfDqIX6HH2ZJ188SP9hjfnGvfi0iiRKj7oIMQeuwa6D8',
-    'return_url' => 'http://localhost/API/paypal_integration/response.php',
-    'cancel_url' => 'http://localhost/API/paypal_integration/cancel.php'
+    'return_url' => 'https://beautypredictor.000webhostapp.com/API/paypal_integration/response.php',
+    'cancel_url' => 'https://beautypredictor.000webhostapp.com/API/paypal_integration/cancel.php'
 ];
 
 // Database settings. Change these for your database configuration.
 $dbConfig = [
-    'host' => 'localhost:3307',
-    'username' => 'root',
-    'password' => '',
-    'name' => 'databas'
+    'host' => 'databases.000webhost.com',
+    'username' => 'id18414943_root',
+    'password' => 'Database123@',
+    'name' => 'id18414943_beautiproducts'
 ];
 
 $apiContext = getApiContext($paypalConfig['client_id'], $paypalConfig['client_secret'], $enableSandbox);
