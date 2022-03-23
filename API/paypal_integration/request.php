@@ -43,9 +43,13 @@ $payment->setIntent('sale')
     ->setRedirectUrls($redirectUrls);
 
 try {
-    $payment->create($apiContext);
-} catch (Exception $e) {
-    throw new Exception($e);
+$payment->create($apiContext);
+} catch (PayPal\Exception\PayPalConnectionException $ex) {
+echo $ex->getCode(); // Prints the Error Code
+echo $ex->getData(); // Prints the detailed error message
+die($ex);
+} catch (Exception $ex) {
+die($ex);
 }
 
 header('location:' . $payment->getApprovalLink());
