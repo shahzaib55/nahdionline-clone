@@ -49,7 +49,7 @@ if(isset($postdata) && !empty($postdata)){
                 session_start();
                 $_SESSION['bill'] = $bill;
               
-                header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php");
+                header("Location: https://beautypredictor.000webhostapp.com/API/paypal_integration/request.php");
 	      
 	       //ob_end_clean();
 	        }
