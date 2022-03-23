@@ -14,8 +14,8 @@ $enableSandbox = true;
 $paypalConfig = [
     'client_id' => 'AcoYP-l9EAe-YzmABUMCUbpINMa16uS_1L6qliZqHEEFCkfOek8NKXSqsSodMPmqNonyitbmryfAruRk',
     'client_secret' => 'ENUXnnWd5P24RGIsxyOYxfLDS7E9AmExD4CzwfDqIX6HH2ZJ188SP9hjfnGvfi0iiRKj7oIMQeuwa6D8',
-    'return_url' => 'https://beautypredictor.000webhostapp.com/API/paypal_integration/response.php',
-    'cancel_url' => 'https://beautypredictor.000webhostapp.com/API/paypal_integration/cancel.php'
+    'return_url' => 'https://quiet-caverns-02461.herokuapp.com/paypal_integration/response.php',
+    'cancel_url' => 'https://quiet-caverns-02461.herokuapp.com/paypal_integration/cancel.php'
 ];
 
 ;
