@@ -20,7 +20,7 @@ $currency = 'USD';
 session_start();
 
 $totalAmount = $_SESSION["bill"];
-$amountPayable = $totalAmount;
+$amountPayable = 100;
 $invoiceNumber = uniqid();
 
 $amount = new Amount();
