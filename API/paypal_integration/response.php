@@ -4,7 +4,7 @@ use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 
 require 'config.php';
-
+require_once '../config/database.php';
 if (empty($_GET['paymentId']) || empty($_GET['PayerID'])) {
     throw new Exception('The response is missing the paymentId and PayerID');
     
