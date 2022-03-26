@@ -1,6 +1,6 @@
 <?php
 
 require_once '../config/database.php';
-   header("Location:http://localhost:3000/");
+   header("Location:http://localhost:3000/?success=true");
 echo json_encode(["success"=>true,"msg"=>"transaction succeeded"]);
 ?>
