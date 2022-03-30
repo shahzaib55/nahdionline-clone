@@ -52,7 +52,7 @@ if(isset($postdata) && !empty($postdata)){
                 $_SESSION['bill'] = $request->order_bill;
                 
               
-                header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php");
+                header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php?bill=".$request->order_bill);
 	      
 	       //ob_end_clean();
 	        }
