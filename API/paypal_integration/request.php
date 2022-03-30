@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 use PayPal\Api\Amount;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
@@ -17,7 +17,7 @@ $payer->setPaymentMethod('paypal');
 // Set some example data for the payment.
 
 $currency = 'USD';
-session_start();
+
 
 $totalAmount = $_SESSION["bill"];
 $amountPayable = $totalAmount;
