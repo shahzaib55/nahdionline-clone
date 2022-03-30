@@ -19,8 +19,8 @@ $payer->setPaymentMethod('paypal');
 $currency = 'USD';
 session_start();
 
-// $totalAmount = $_SESSION["bill"];
-$amountPayable = 100;
+$totalAmount = $_SESSION["bill"];
+$amountPayable = $totalAmount;
 $invoiceNumber = uniqid();
 
 $amount = new Amount();
