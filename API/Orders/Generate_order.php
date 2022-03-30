@@ -47,10 +47,12 @@ if(isset($postdata) && !empty($postdata)){
             if(mysqli_query($conn, $qry )){ 
 
                 session_start();
-                $_SESSION['bill'] = $request->order_bill;
+       echo json_encode(["success"=>false,"msg"=>$request->order_bill]);
+            return;
+                // $_SESSION['bill'] = $request->order_bill;
                 
               
-                header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php");
+                // header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php");
 	      
 	       //ob_end_clean();
 	        }
