@@ -47,7 +47,7 @@ if(isset($postdata) && !empty($postdata)){
             if(mysqli_query($conn, $qry )){ 
 
                 session_start();
-                $_SESSION['bill'] = $bill;
+                $_SESSION['bill'] = $request->order_bill;
                 
               
                 header("Location: https://quiet-caverns-02461.herokuapp.com/paypal_integration/request.php");
