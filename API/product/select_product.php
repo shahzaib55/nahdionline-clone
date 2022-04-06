@@ -24,7 +24,7 @@ require_once '../config/database.php';
                 
 
                   //search which product to reccomend
-				  if(in_array($usefor1,$usefor) or in_array($usefor2,$usefor)or in_array($usefor3,$usefor))
+				  if(in_array($usefor1,$usefor) ||in_array($usefor2,$usefor) || in_array($usefor3,$usefor))
                   {
                 //store data into array
                     $json_array[] = array(
