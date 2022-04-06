@@ -22,7 +22,7 @@ require_once '../config/database.php';
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
 			      $usefor= explode(",",$row_product['product_usefor']);
                 
-   echo json_encode(["success"=>true,"fetchproduct"=>$usefor]);
+   echo json_encode(["success"=>true,"fetchproduct"=>$row_product['product_usefor']]);
 			return;
 
                   //search which product to reccomend
