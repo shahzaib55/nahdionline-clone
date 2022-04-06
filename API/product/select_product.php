@@ -23,6 +23,7 @@ require_once '../config/database.php';
 			      $usefor= explode(",",$row_product['product_usefor']);
                 
                   echo $usefor1;
+                  echo $row_product['product_usefor'];
                   //search which product to reccomend
 				  if(in_array($usefor1,$usefor))
                   {
