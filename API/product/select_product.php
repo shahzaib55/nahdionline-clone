@@ -22,7 +22,7 @@ require_once '../config/database.php';
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
 			      $usefor= explode(",",$row_product['product_usefor']);
                 
-
+                  echo $usefor1;
                   //search which product to reccomend
 				  if(in_array($usefor1,$usefor))
                   {
