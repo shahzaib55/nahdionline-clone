@@ -22,19 +22,20 @@ require_once '../config/database.php';
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
 			      $usefor= explode(",",$row_product['product_usefor']);
                 
-                  echo $usefor1;
-                  echo $row_product['product_usefor'];
+   echo json_encode(["success"=>true,"fetchproduct"=>$usefor]);
+			return;
+
                   //search which product to reccomend
-				  if(in_array($usefor1,$usefor))
-                  {
-                //store data into array
-                    $json_array[] = array(
-                        'product_name' =>  $row_product ['product_name'],
-                        'product_price' =>  $row_product ['product_price'],
-                        'product_image' =>  $row_product ['product_image'],
-                        'product_description' =>  $row_product ['product_description']
-                      );
-            }
+			// 	  if(in_array($usefor1,$usefor))
+            //       {
+            //     //store data into array
+            //         $json_array[] = array(
+            //             'product_name' =>  $row_product ['product_name'],
+            //             'product_price' =>  $row_product ['product_price'],
+            //             'product_image' =>  $row_product ['product_image'],
+            //             'product_description' =>  $row_product ['product_description']
+            //           );
+            // }
 			}
             //return json array
             echo json_encode(["success"=>true,"fetchproduct"=>$json_array]);
