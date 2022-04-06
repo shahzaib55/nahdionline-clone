@@ -1,7 +1,26 @@
 <?php
 //include connection file
 require_once '../config/database.php';
+function my_array_unique($array, $keep_key_assoc = false){
+    $duplicate_keys = array();
+    $tmp = array();       
 
+    foreach ($array as $key => $val){
+        // convert objects to arrays, in_array() does not support objects
+        if (is_object($val))
+            $val = (array)$val;
+
+        if (!in_array($val, $tmp))
+            $tmp[] = $val;
+        else
+            $duplicate_keys[] = $key;
+    }
+
+    foreach ($duplicate_keys as $key)
+        unset($array[$key]);
+
+    return $keep_key_assoc ? $array : array_values($array);
+}
  //get data from json file
  $postdata = file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata)){
@@ -44,6 +63,7 @@ require_once '../config/database.php';
 			
 			}
             //return json array
+            $json_array=my_array_unique($json_array);
             echo json_encode(["success"=>true,"fetchproduct"=>$json_array]);
 			return;
 			
