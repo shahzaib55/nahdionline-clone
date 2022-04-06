@@ -29,7 +29,7 @@ require_once '../config/database.php';
                   {
                 //store data into array
                     $json_array[] = array(
-                       'product_id' =>  $row_product ['product_id'],
+                'product_id' =>  $row_product ['product_id'],
 				  'category_id' =>  $row_product ['category_id'],
 				  'product_name' =>  $row_product ['product_name'],
 				  'product_price' =>  $row_product ['product_price'],
