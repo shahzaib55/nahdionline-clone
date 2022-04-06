@@ -20,7 +20,7 @@ require_once '../config/database.php';
 	//check if any record found
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
-			      $usefor= json_encode($row_product['product_usefor']);
+			      $usefor= explode(",",$row_product['product_usefor']);
                   echo $usefor;
 
                   //search which product to reccomend
