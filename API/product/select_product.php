@@ -14,13 +14,14 @@ require_once '../config/database.php';
      $usefor3 =  $product_usefor[2];
 
      //select all data from product
-   $sql = "SELECT * FROM product ";
+   $sql = "SELECT * FROM product";
     $exeSQL = mysqli_query($conn, $sql);
 
 	//check if any record found
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
-			      $usefor= json_decode($row_product ['product_usefor']);
+			      $usefor= json_decode($row_product['product_usefor']);
+                  echo $usefor;
 
                   //search which product to reccomend
 				  if(in_array($usefor1,$usefor) or in_array($usefor2,$usefor)or in_array($usefor3,$usefor))
