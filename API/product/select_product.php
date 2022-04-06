@@ -9,9 +9,7 @@ require_once '../config/database.php';
 
      $product_usefor =   $request->product_usefor;
      //store values in index 
-     $usefor1 =  $product_usefor[0];
-     $usefor2 =  $product_usefor[1];
-     $usefor3 =  $product_usefor[2];
+    
 
      //select all data from product
    $sql = "SELECT * FROM product";
@@ -22,10 +20,9 @@ require_once '../config/database.php';
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
 			      $usefor= json_decode($row_product['product_usefor']);
                 $usefor=explode(",",$usefor);
-   
-
-                  //search which product to reccomend
-				  if(in_array($usefor1,$usefor))
+       
+                for ($x = 0; $x <count($product_usefor); $x++) {
+	  if(in_array($product_usefor[$x],$usefor))
                   {
                 //store data into array
                     $json_array[] = array(
@@ -39,6 +36,12 @@ require_once '../config/database.php';
 				  'product_description' =>  $row_product ['product_description']
                       );
             }
+                }
+  
+}
+
+                  //search which product to reccomend
+			
 			}
             //return json array
             echo json_encode(["success"=>true,"fetchproduct"=>$json_array]);
