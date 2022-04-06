@@ -20,8 +20,8 @@ require_once '../config/database.php';
 	//check if any record found
 		if(mysqli_num_rows($exeSQL) > 0){
 			while($row_product = mysqli_fetch_array($exeSQL)){ 
-			      $usefor= json_encode($row_product['product_usefor']);
-                
+			      $usefor= json_decode($row_product['product_usefor']);
+                $usefor=explode(",",$usefor);
    echo json_encode(["success"=>true,"fetchproduct"=>$usefor]);
 			return;
 
